@@ -1,0 +1,205 @@
+.product-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.cadre {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 25px;
+  background-color: rgba(250, 250, 250, 0.912);
+  width: 80%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.cadre img {
+  max-width: 100%;
+  max-height: 300px;
+  height: auto;
+  width: auto;
+}
+
+/* Specific styling for Cadre 1 */
+.cadre:nth-child(1) {
+  flex-direction: row;
+  text-align: left;
+}
+
+.cadre:nth-child(1) .cadre-left {
+  padding-right: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cadre:nth-child(1) .main-image {
+  max-width: 100%; /* Ensure main image fits within its container */
+  max-height: 300px; /* Limit the height of the main image */
+  height: auto;
+  width: auto;
+}
+
+.cadre:nth-child(1) .thumbnails-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adjust spacing between thumbnails */
+  margin-top: 10px; /* Margin between main image and thumbnails */
+}
+
+.cadre:nth-child(1) .thumbnail-item {
+  flex: 1;
+}
+
+.cadre:nth-child(1) .thumbnail {
+  max-width: 100%; /* Ensure thumbnails fit within their container */
+  max-height: 100px; /* Limit the height of the thumbnails */
+  height: auto;
+  width: auto;
+  cursor: pointer; /* Add cursor pointer for clickable effect */
+}
+
+.cadre:nth-child(1) .thumbnails-share {
+  margin-top: 10px; /* Margin between thumbnails and share options */
+}
+
+/* Specific styling for Cadre 1 */
+/* Specific styling for Cadre 1 */
+.cadre:nth-child(1) .thumbnails-share p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px; /* Spacing below the "Partagez ce produit" text */
+}
+
+.cadre:nth-child(1) .thumbnails-share .share-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.cadre:nth-child(1) .thumbnails-share-icons i {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 2px solid #a44f9f;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #a44f9f;
+  text-decoration: none;
+  margin: 30px 15px 30px 0;
+  transition: .5s ease;
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: calc(.2s * var(--i));
+}
+
+.cadre:nth-child(1) .thumbnails-share-icons i:hover {
+  background: #a44f9f;
+  color: #000;
+  box-shadow: 0 0 20px #a44f9f;
+}
+
+.cadre:nth-child(1) .cadre-right i{
+  
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 2px solid #a44f9f;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #a44f9f;
+  text-decoration: none;
+  margin: 10px 10px 10px 0;
+  transition: .5s ease;
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: calc(.2s * var(--i));
+}
+
+.cadre:nth-child(1) .cadre-right i:hover {
+  background: #a44f9f;
+  color: #000;
+  box-shadow: 0 0 20px #a44f9f;
+}
+
+/* Specific styling for Cadre 2 */
+.cadre:nth-child(2) .cadre-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cadre:nth-child(2) .cadre-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: justify;
+  width: 100%;
+}
+
+.cadre:nth-child(2) .cadre-details p {
+  text-align: center;
+  max-width: 100%;
+}
+
+/* Specific styling for Cadre 3 */
+.cadre:nth-child(3) {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-direction: row;
+  text-align: justify;
+}
+
+.cadre:nth-child(3) .cadre-left,
+.cadre:nth-child(3) .cadre-right {
+  flex: 1;
+  margin: 0 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cadre {
+    width: 90%;
+  }
+
+  .cadre:nth-child(1) {
+    flex-direction: column;
+  }
+
+  .cadre:nth-child(3) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cadre-left,
+  .cadre-right {
+    text-align: center;
+    margin: 0;
+  }
+}
+
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+

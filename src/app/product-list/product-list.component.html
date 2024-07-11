@@ -1,0 +1,11 @@
+<cdk-virtual-scroll-viewport itemSize="100" class="product-list-viewport">
+  <div *cdkVirtualFor="let product of products" class="product">
+    <h2>{{ product.title }}</h2>
+    <img [src]="product.imageUrl" alt="{{ product.title }}" />
+    <p>{{ product.description }}</p>
+    <p>Price: {{ product.price | currency: 'TND' }}</p>
+    <p>Category: {{ product.productCategory }}</p>
+    <button [routerLink]="['/product-detail', product.id]">View Details</button>
+    <button (click)="addToCart(product)">Add to Cart</button>
+  </div>
+</cdk-virtual-scroll-viewport>

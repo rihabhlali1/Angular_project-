@@ -1,0 +1,91 @@
+<!-- src/app/cart/cart.component.html -->
+<div *ngIf="product" class="product-detail">
+  <!-- Cadre 1: Product Overview -->
+  <div class="cadre">
+    <div class="cadre-left">
+      <!-- Main Product Image -->
+      <img [src]="selectedImage" alt="{{ product.title }}" class="main-image" />
+
+      <!-- Thumbnails Section -->
+      <div class="thumbnails-container">
+        <div *ngFor="let img of product.images" class="thumbnail-item">
+          <img [src]="img" (click)="changeImage(img)" class="thumbnail" alt="{{ product.title }} side view" />
+        </div>
+      </div>
+
+      <!-- Share Options Under Thumbnails -->
+      <div class="thumbnails-share">
+        <p>Share this product:</p>
+      </div>
+      <div class="thumbnails-share-icons">
+        <i class='bx bxl-facebook-circle' style='color:#bc0f93' ></i>
+        <i class='bx bxl-twitter' style='color:#bc0f93' ></i>
+        <i class='bx bxl-instagram-alt' style='color:#bc0f93' ></i>
+      </div>
+    </div>
+
+    <div class="cadre-right">
+      <!-- Product Details -->
+      <p class="large-text"><strong> Official Store<b> BEST SELLER </b></strong></p>
+      <p>{{ product.title }} - {{ product.description }} - {{ product.features }}</p>
+      <p>Brand: {{ product.brand }} | Similar products by {{ product.brand }}</p>
+      <p>{{ product.price | currency: 'TND' }}</p>
+      <p>{{ product.originalPrice | currency: 'USD' }}</p>
+      <p>{{ product.discount }}%</p>
+      <p>{{ product.stock }} items only</p>
+      <p>Free shipping (save {{ product.shippingDiscount | currency: 'TND' }}) to {{ product.shippingDestination }}</p>
+      <p>{{ product.rating }} out of 5</p>
+      <p>{{ product.reviews?.length }} verified reviews</p>
+      <button routerLink="/cart">BUY NOW</button>
+
+      <br><br>
+      <p><u><b>PROMOTIONS</b></u></p>
+      <p><i class='bx bx-star' style='color:#bc0f93'></i>New customers: Enjoy {{ product.newCustomerDiscount }} %off on the app with code <b>'{{ product.newCustomerCode }}'</b>(capped at {{ product.newCustomerLimit }})</p>
+      <p><i class='bx bx-phone' style='color:#bc0f93'></i>To order, call {{ product.contactNumber }}</p>
+      <p><i class='bx bxl-telegram' style='color:#bc0f93'></i>Free shipping on orders over {{ product.freeShippingThreshold }} TND on {{ product.express }} products</p>
+    </div>
+  </div>
+
+  <!-- Cadre 2: Detailed Description -->
+  <div class="cadre">
+    <div class="cadre-image">
+      <img [src]="product.imageUrl" alt="{{ product.title }}" />
+    </div>
+    <div class="cadre-details">
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.longDescription }}</p>
+      <p>{{ product.features }}</p>
+      <p>{{ product.highlights }}</p>
+      <p>{{ product.performance }}</p>
+      <p>{{ product.battery }}</p>
+      <p>{{ product.security }}</p>
+    </div>
+  </div>
+
+  <!-- Cadre 3: Technical Specifications -->
+  <div class="cadre">
+    <div class="cadre-left">
+      <h3>Technical Specifications</h3>
+      <p>MAIN FEATURES</p>
+      <p>Screen: {{ product.screen }} inches {{ product.resolution }}</p>
+      <p>Processor: {{ product.processor }}</p>
+      <p>RAM: {{ product.ram }}</p>
+      <p>Storage Capacity: {{ product.storage }}</p>
+      <p>Front Camera: {{ product.frontCamera }}</p>
+      <p>Rear Camera: {{ product.rearCamera }}</p>
+      <p>SIM Card Slots: {{ product.sim }}</p>
+    </div>
+    <div class="cadre-right">
+      <p>Battery: {{ product.battery }}</p>
+      <p>Operating System: {{ product.os }}</p>
+      <p>Connectivity: {{ product.connectivity }}</p>
+      <p>TECHNICAL DESCRIPTION</p>
+      <p>SKU: {{ product.sku }}</p>
+      <p>GTIN Barcode: {{ product.gtin }}</p>
+      <p>Product Range: {{ product.range }}</p>
+      <p>Model: {{ product.model }}</p>
+      <p>Weight (kg): {{ product.weight }}</p>
+      <p>Color: {{ product.color }}</p>
+    </div>
+  </div>
+</div>

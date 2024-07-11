@@ -1,0 +1,60 @@
+<header class="header">
+    <div class="logo">
+        <span>Flesk Shopping <i class='bx bxs-shopping-bags' style='color:#6e32f7'  ></i></span>
+    </div>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a routerLink="../home">Home</a></li>
+            <li class="dropdown" (mouseenter)="toggleCategories()" (mouseleave)="closeCategories()">
+                <a class="dropdown-toggle">Categories</a>
+                <ul class="dropdown-menu" *ngIf="showCategories" (mouseleave)="closeCategories()">
+                    <li><a [routerLink]="['/products', 'Electronics']">Electronics</a></li>
+                    <li><a [routerLink]="['/products', 'Phones']">Phones</a></li>
+                    <li><a [routerLink]="['/products', 'Informatique']">Informatique</a></li>
+                    <li><a [routerLink]="['/products', 'Mode']">Mode</a></li>
+                    <!-- Add more categories as needed -->
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="actions">
+        <button class="btn" (click)="toggleLogin()" routerLink="../login">Login</button>
+        <button class="btn" (click)="toggleRegister()" routerLink="../register">Register</button>
+        <button class="btn" routerLink="../cart" [class.active]="currentRoute.startsWith('/cart')">
+            <i class='bx bx-cart-add' style='color:hsl(314, 65%, 59%)'></i> CheckOut
+            <span class="badge">{{ cartItems }}</span>
+        </button>
+    </div>
+</header>
+
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" *ngIf="showLogin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Login</h5>
+                <button type="button" class="btn-close" (click)="toggleLogin()"></button>
+            </div>
+            <div class="modal-body">
+                <app-login></app-login>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" *ngIf="showRegister">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Register</h5>
+                <button type="button" class="btn-close" (click)="toggleRegister()"></button>
+            </div>
+            <div class="modal-body">
+                <app-register></app-register>
+            </div>
+        </div>
+    </div>
+</div>

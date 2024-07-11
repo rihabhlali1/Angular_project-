@@ -1,0 +1,104 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #343a40; /* Dark background color */
+    padding: 5px 5px;
+    box-shadow: 0 2px 4px #00000000; /* Shadow for header */
+    color: #ffffff; /* Text color */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #ffc107; /* Hover color */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px); /* Position below the dropdown toggle */
+    left: 0;
+    background-color: #343a40; /* Dark background color */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for dropdown */
+    z-index: 1000; /* Ensure dropdown is above other content */
+}
+
+.dropdown-menu li {
+    margin-bottom: 5px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    align-items: center; /* Center align items within actions container */
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex; /* Use flexbox for better control over alignment */
+    align-items: center; /* Center items vertically within the button */
+    justify-content: center; /* Center items horizontally within the button */
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white on hover */
+}
+
+.btn.active {
+    background-color: hsl(276, 66%, 86%); /* Active button background color */
+    color: #343a40; /* Active button text color */
+}
+
+.bx-cart-add {
+    font-size: 25px; /* Adjust icon size */
+    margin-right: 8px; /* Space between the icon and text */
+    vertical-align: middle; /* Align the icon vertically in the middle */
+}
+
+
+.badge {
+    background-color: hsl(273, 72%, 50%); /* Badge background color */
+    color: #ffffff; /* Badge text color */
+    border-radius: 50%; /* Make the badge round */
+    padding: 3px 6px; /* Adjust badge padding */
+    font-size: 0.8rem; /* Adjust badge font size */
+    margin-left: 5px; /* Space between the text and badge */
+}
+
+

@@ -1,0 +1,31 @@
+/* src/app/app.component.css */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the wrapper covers the full viewport height */
+  }
+  
+  header {
+    /* Header styles */
+  }
+  
+  main {
+    flex: 1; /* Take up the remaining space */
+  }
+  
+  footer {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    margin-top: auto; /* Push footer to the bottom */
+  }
+  

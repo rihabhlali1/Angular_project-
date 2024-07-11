@@ -1,0 +1,17 @@
+<div>
+    <div *ngFor="let category of categories">
+      <button (click)="filterProductsByCategory(category)">{{ category.name }}</button>
+    </div>
+  </div>
+  
+  <div class="product-list">
+    <div class="product" *ngFor="let product of filteredProducts">
+      <h2>{{ product.title }}</h2>
+      <img [src]="product.imageUrl" alt="{{ product.title }}" />
+      <p>{{ product.description }}</p>
+      <p>Price: ${{ product.price }}</p>
+      <p>Category: {{ product.productCategory }}</p>
+      <button [routerLink]="['/product-detail', product.id]">View Details</button>
+    </div>
+  </div>
+  

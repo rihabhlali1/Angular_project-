@@ -1,0 +1,71 @@
+/* src/app/cart/cart.component.css */
+
+/* Shopping Cart Container */
+.cart {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+/* Cart Icon Styling */
+.bx-cart-add {
+    font-size: 72px; /* Adjust icon size */
+    color: #bc0f93; /* Adjust icon color */
+    margin-bottom: 20px; /* Space below the icon */
+}
+
+/* Empty Cart Message Styling */
+.empty-cart-message {
+    margin-top: 20px;
+    color: #555;
+}
+
+.empty-cart-message p {
+    margin-bottom: 10px;
+}
+
+.empty-cart-message button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #a44f9f;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.empty-cart-message button:hover {
+    background-color: #8c3b7a;
+}
+
+/* Button Icon Styling */
+.empty-cart-message button i {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #a44f9f;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #a44f9f;
+    margin-right: 10px;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.empty-cart-message button:hover i {
+    background: #a44f9f;
+    color: #000;
+    box-shadow: 0 0 20px #a44f9f;
+    transform: scale(1.1);
+}
