@@ -1,0 +1,24 @@
+<!-- src/app/search-results/search-results.component.html -->
+<div class="search-results">
+    <h2>Search Results for "{{ searchTerm }}"</h2>
+    
+    <ng-container *ngIf="products.length > 0; else noResults">
+      <div class="products-container">
+        <div class="product-card" *ngFor="let product of products" [routerLink]="['/product-detail', product.id]">
+          <img [src]="product.imageUrl" alt="{{ product.title }}" class="product-image" />
+          <div class="product-info">
+            <h3 class="product-title">{{ product.title }}</h3>
+            <p class="product-description">{{ product.description }}</p>
+            <p class="product-price">Price: {{ product.price | currency }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  
+    <ng-template #noResults>
+      <div class="no-results">
+        <p>No products found.</p>
+      </div>
+    </ng-template>
+  </div>
+  

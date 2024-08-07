@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms'; 
-import { HttpClientModule } from '@angular/common/http';
-import { JwtModule } from '@auth0/angular-jwt';
-import { FormsModule } from '@angular/forms'; 
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { JwtModule } from '@auth0/angular-jwt';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,10 +18,16 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { CartService } from './services/cart.service'; 
-import { ProductService } from './services/product.service';
 import { CategorySelectionComponent } from './category-selection/category-selection.component';
 
+import { CartService } from './services/cart.service';
+import { ProductService } from './services/product.service';
+import { ErrorInterceptor } from './core/Interceptors/error.interceptor';
+import { LoadingInterceptor } from './core/Interceptors/loading.interceptor';
+import { JwtInterceptor } from '../environments/jwt.interceptor';
+import { AuthInterceptor } from './core/Interceptors/auth.interceptor';
+import { ContactComponent } from './contact/contact.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 
 @NgModule({
@@ -34,30 +41,36 @@ import { CategorySelectionComponent } from './category-selection/category-select
     RegisterComponent,
     ProductListComponent,
     ProductDetailComponent,
-    CategorySelectionComponent
+    CategorySelectionComponent,
+    ContactComponent,
+    SearchResultsComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     ScrollingModule,
+    NgbModalModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem('access_token');  // Replace with your token getter logic
-        },
-        allowedDomains: ['example.com'],  // Replace with your domain(s)
-        disallowedRoutes: ['http://example.com/example-path'],  // Replace with your disallowed route(s)
+        tokenGetter: () => localStorage.getItem('access_token'),
+        allowedDomains: ['example.com'],
+        disallowedRoutes: ['http://example.com/example-path']
       }
     })
   ],
   providers: [
-    provideClientHydration(),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     CartService,
     ProductService
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

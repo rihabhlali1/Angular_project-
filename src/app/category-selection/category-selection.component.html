@@ -4,7 +4,7 @@
     </div>
   </div>
   
-  <div class="product-list">
+  <div class="product-list" routerLink="../product-list">
     <div class="product" *ngFor="let product of filteredProducts">
       <h2>{{ product.title }}</h2>
       <img [src]="product.imageUrl" alt="{{ product.title }}" />

@@ -1,17 +1,16 @@
 <div class="login-container">
-    <h2>Login</h2>
-    <form>
+    <form (submit)="login()">
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username">
+            <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control" placeholder="Enter your username">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password">
+            <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Enter your password">
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
     <p class="register-link">
-        If you don't have an account, <a href="#" routerLink="../register">create one</a>.
+        If you don't have an account, <span (click)="register()" class="link-style">create one</span>.
     </p>
 </div>

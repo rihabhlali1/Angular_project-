@@ -1,104 +1,248 @@
+/* Header styles */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #343a40; /* Dark background color */
-    padding: 5px 5px;
-    box-shadow: 0 2px 4px #00000000; /* Shadow for header */
-    color: #ffffff; /* Text color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #343a40; /* Dark background color */
+  padding: 5px 15px; /* Adjusted padding */
+  box-shadow: 0 2px 4px #00000000; /* Shadow for header */
+  color: #ffffff; /* Text color */
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .navbar {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .nav-links {
-    list-style-type: none;
-    display: flex;
-    gap: 10px;
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
 }
 
 .nav-links li a {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px;
-    transition: color 0.3s ease;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px;
+  transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
-    color: #ffc107; /* Hover color */
+  color: #ffc107; /* Hover color */
+}
+
+.nav-links li a.active {
+  color: #ffc107; /* Active link color */
 }
 
 .dropdown {
-    position: relative;
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer; /* Change cursor to pointer */
 }
 
 .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: calc(100% + 10px); /* Position below the dropdown toggle */
-    left: 0;
-    background-color: #343a40; /* Dark background color */
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for dropdown */
-    z-index: 1000; /* Ensure dropdown is above other content */
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px); /* Position below the dropdown toggle */
+  left: 0;
+  background-color: #343a40; /* Dark background color */
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for dropdown */
+  z-index: 1000; /* Ensure dropdown is above other content */
+  border-radius: 4px; /* Rounded corners for dropdown */
+  min-width: 150px; /* Ensure dropdown has a minimum width */
+}
+
+/* Show dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
 
 .dropdown-menu li {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
+  list-style-type: none; /* Remove bullet points */
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
+.dropdown-menu.show {
+  display: block;
 }
 
 .actions {
-    display: flex;
-    gap: 10px;
-    align-items: center; /* Center align items within actions container */
+  display: flex;
+  gap: 10px;
+  align-items: center; /* Center align items within actions container */
+}
+
+.search-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.search-tab input[type="text"] {
+  padding: 5px;
+  padding-right: 30px; /* Adjust padding for the search icon */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-tab .bx-search-alt {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer; /* Change cursor to hand */
+  color: #6e32f7; /* Optional: color for the search icon */
+}
+
+.search-tab .bx-search-alt:hover {
+  color: #4777f1; /* Change icon color on hover */
 }
 
 .btn {
-    background-color: transparent;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-    padding: 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    display: flex; /* Use flexbox for better control over alignment */
-    align-items: center; /* Center items vertically within the button */
-    justify-content: center; /* Center items horizontally within the button */
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex; /* Use flexbox for better control over alignment */
+  align-items: center; /* Center items vertically within the button */
+  justify-content: center; /* Center items horizontally within the button */
 }
 
 .btn:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white on hover */
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white on hover */
 }
 
 .btn.active {
-    background-color: hsl(276, 66%, 86%); /* Active button background color */
-    color: #343a40; /* Active button text color */
+  background-color: hsl(276, 66%, 86%); /* Active button background color */
+  color: #343a40; /* Active button text color */
 }
 
 .bx-cart-add {
-    font-size: 25px; /* Adjust icon size */
-    margin-right: 8px; /* Space between the icon and text */
-    vertical-align: middle; /* Align the icon vertically in the middle */
+  font-size: 25px; /* Adjust icon size */
+  margin-right: 8px; /* Space between the icon and text */
+  vertical-align: middle; /* Align the icon vertically in the middle */
 }
-
 
 .badge {
-    background-color: hsl(273, 72%, 50%); /* Badge background color */
-    color: #ffffff; /* Badge text color */
-    border-radius: 50%; /* Make the badge round */
-    padding: 3px 6px; /* Adjust badge padding */
-    font-size: 0.8rem; /* Adjust badge font size */
-    margin-left: 5px; /* Space between the text and badge */
+  background-color: hsl(235, 100%, 2%); /* Badge background color */
+  color: #ffffff; /* Badge text color */
+  border-radius: 50%; /* Make the badge round */
+  padding: 3px 6px; /* Adjust badge padding */
+  font-size: 0.8rem; /* Adjust badge font size */
+  margin-left: 5px; /* Space between the text and badge */
 }
 
+/* Modal overlay and content */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Ensure modal is above other content */
+}
 
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header .btn-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-body {
+  margin-top: 20px;
+}
+
+/* Login Dropdown */
+.login-dropdown {
+  position: relative;
+}
+
+.login-dropdown i {
+  font-size: 30px; /* Adjusted icon size for user */
+  cursor: pointer;
+}
+
+.login-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.2px); /* Bring dropdown closer to the user icon */
+  right: 0;
+  background-color: #343a40; /* Match dropdown background color */
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Dropdown shadow */
+  z-index: 1000;
+  border-radius: 4px; /* Rounded corners for dropdown */
+  min-width: 150px; /* Ensure dropdown has a minimum width */
+}
+
+/* Keep dropdown open when hovering over it */
+.login-dropdown:hover .login-dropdown-menu,
+.login-dropdown-menu:hover {
+  display: block;
+}
+
+.login-dropdown-menu li {
+  margin-bottom: 5px;
+  list-style-type: none; /* Remove bullet points */
+}
+
+.login-dropdown-menu li:last-child {
+  margin-bottom: 0;
+}
+
+.login-dropdown-menu .btn {
+  padding: 5px 10px;
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+  color: #ffffff;
+  display: flex;
+  align-items: center; /* Center items vertically */
+}
+
+.login-dropdown-menu .btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.login-dropdown-menu .btn i {
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 18px; /* Smaller icon size for login/register */
+}
+
+/* Adjust contact icon size */
+.btn[routerLink="/contact"] i {
+  font-size: 28px; /* Larger icon size for contact */
+}

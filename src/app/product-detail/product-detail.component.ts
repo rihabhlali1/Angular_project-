@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
+import { CartService } from '../services/cart.service'; // Import CartService
 import { Product } from '../models/models'; // Adjust path as per your project structure
 
 @Component({
@@ -14,20 +15,21 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const productId = +params['id']; // convert string to number
-      this.productService.getProductById(productId).subscribe({
-        next: (product: Product | undefined) => {
+      this.productService.getProduct(productId).subscribe({
+        next: (product: Product) => {
           this.product = product;
           if (this.product) {
             this.selectedImage = this.product.imageUrl; // Set selectedImage here
           }
         },
-        error: err => {
+        error: (err: any) => { // Specify the type for 'err'
           console.error('Error fetching product', err);
         }
       });
@@ -40,11 +42,10 @@ export class ProductDetailComponent implements OnInit {
   }
 
   // Method to add a product to the cart (example)
-  addToCart(): void {
-    // Implement your add to cart logic here
-    console.log('Product added to cart:', this.product);
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
   }
-
+  
   // Method to change the selected image
   changeImage(image: string) {
     this.selectedImage = image;

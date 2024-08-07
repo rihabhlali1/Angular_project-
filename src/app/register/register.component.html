@@ -1,21 +1,21 @@
 <div class="register-container">
-    <h2>Register</h2>
-    <form>
-        <div class="form-group">
+    
+    <form (submit)="register()">
+        <div>
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Enter your desired username">
+            <input type="text" id="username" [(ngModel)]="username" name="username" required>
         </div>
-        <div class="form-group">
+        <div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email">
+            <input type="email" id="email" [(ngModel)]="email" name="email" required>
         </div>
-        <div class="form-group">
+        <div>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password">
+            <input type="password" id="password" [(ngModel)]="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit">Register</button>
     </form>
-    <p class="login-link">
-        Already have an account? <a href="#" routerLink="../login">Login here</a>.
-    </p>
+    <div class="login-link">
+        <p>If you have an account, <span (click)="login()" class="link-style">login here</span>.</p>
+    </div>
 </div>

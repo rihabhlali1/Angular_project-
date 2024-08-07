@@ -1,23 +1,39 @@
-<!-- src/app/home/home.component.html -->
-<div class="category-card" *ngFor="let category of categories; let i = index">
-  <div class="category-card-header">
-    <h2 class="category-title">{{ category.name }}</h2>
+<div class="intro-card">
+  <div class="intro-card-content">
+    <h3>Welcome to Flesk Shopping</h3>
+    <h1>Shop All Day Long! Place an Order and We'll Deliver to Your Doorstep</h1>
+    <p id="intro-paragraph"></p>
+    <p>Discover a wide range of products that cater to all your needs. From the latest electronics to stylish fashion, we have it all. Enjoy a seamless shopping experience with fast delivery and excellent customer service.</p>
+    <p>Sign up today and be the first to know about our special offers and new arrivals. Your satisfaction is our top priority.</p>
   </div>
-  <div class="category-card-body">
-    <div class="scroll-container">
-      <button class="scroll-button left" (click)="scrollLeft(i)">‹</button>
-      <div class="product-list" #scrollContainer>
-        <div class="product-card" *ngFor="let product of category.products" [routerLink]="['/product-detail', product.id]">
-          <img [src]="product.imageUrl" alt="{{ product.title }}" />
-          <div class="product-card-content">
-            <h3>{{ product.title }}</h3>
-            <p>{{ product.description }}</p>
-            <p>Price: {{ product.price | currency: 'TND' }}</p>
-            <button routerLink="../cart">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <button class="scroll-button right" (click)="scrollRight(i)">›</button>
-    </div>
+  <div class="intro-card-image">
+    <img src="\assets\introimg1.jpg" alt="Intro Image" />
   </div>
 </div>
+
+<div class="category-section" *ngFor="let category of categories; let i = index">
+  <div class="category-card">
+    <div class="category-card-header">
+      <h2 class="category-title">{{ category.name }}</h2>
+    </div>
+    <div class="category-card-body">
+      <div class="scroll-container">
+        <button class="scroll-button left" (click)="scrollLeft(i)">‹</button>
+        <div class="product-list" #scrollContainer>
+          <div class="product-card" *ngFor="let product of category.products" [routerLink]="['/product-detail', product.id]">
+            <img [src]="product.imageUrl" alt="{{ product.title }}" />
+            <div class="product-card-content">
+              <h3>{{ product.title }}</h3>
+              <p>{{ product.description }}</p>
+              <p>Price: {{ product.price | currency: 'TND' }}</p>
+              <button (click)="addToCart(product)" routerLink="/cart">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <button class="scroll-button right" (click)="scrollRight(i)">›</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+

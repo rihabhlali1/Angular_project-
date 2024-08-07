@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
-import { Category, Product, CategoryType } from '../models/models';
+import { Category, Product } from '../models/models'; // Ensure models are imported correctly
 
 @Component({
   selector: 'app-category-selection',
@@ -15,16 +15,16 @@ export class CategorySelectionComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.categories = this.productService.getCategories();
-    this.allProducts = this.productService.getProducts();
-    this.filteredProducts = [...this.allProducts]; // Initialize with all products
-  
-    console.log('Categories:', this.categories);
-    console.log('All Products:', this.allProducts);
+    this.productService.getCategories().subscribe((categories: Category[]) => {
+      this.categories = categories;
+    });
+
+    this.productService.getProducts().subscribe((products: Product[]) => {
+      this.allProducts = products;
+      this.filteredProducts = [...this.allProducts];
+    });
   }
 
-
-  
   filterProductsByCategory(category: Category): void {
     console.log('Selected Category:', category);
     this.filteredProducts = this.allProducts.filter(product => product.productCategory === category.name);

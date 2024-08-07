@@ -32,12 +32,13 @@ html, body {
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-/* Additional styling remains the same */
+/* Styling for headings */
 h2 {
     text-align: center;
     margin-bottom: 20px;
 }
 
+/* Styling for form elements */
 .form-group {
     margin-bottom: 15px;
 }
@@ -51,13 +52,14 @@ h2 {
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
+/* Styling for buttons */
 .btn {
     display: block;
     width: 100%;
     padding: 10px;
     font-size: 18px;
     color: #fff;
-    background-color: #007bff;
+    background-color: #526272;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -65,9 +67,10 @@ h2 {
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #526272;
 }
 
+/* Styling for registration link */
 .register-link {
     text-align: center;
     margin-top: 15px;
@@ -80,4 +83,14 @@ h2 {
 
 .register-link a:hover {
     text-decoration: underline;
+}
+
+.link-style {
+    color: #007bff; /* Link color */
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-style:hover {
+    text-decoration: none; /* Optional: Remove underline on hover */
 }

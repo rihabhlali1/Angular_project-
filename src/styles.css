@@ -2,7 +2,7 @@
 
 body {
     position: relative;
-    background-image: url('/assets/background1.jpg');
+    background-image: url('/assets/bgg-1.jpg');
     background-size: cover; /* Ensures the image covers the entire background */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-attachment: fixed; /* Fixes the background position */

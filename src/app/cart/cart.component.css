@@ -1,71 +1,189 @@
-/* src/app/cart/cart.component.css */
-
 /* Shopping Cart Container */
 .cart {
-    max-width: 600px;
+    max-width: 100%;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #f9f9f98f;
     text-align: center;
-}
-
-/* Cart Icon Styling */
-.bx-cart-add {
-    font-size: 72px; /* Adjust icon size */
-    color: #bc0f93; /* Adjust icon color */
-    margin-bottom: 20px; /* Space below the icon */
-}
-
-/* Empty Cart Message Styling */
-.empty-cart-message {
+  }
+  
+  /* Cart Table Styling */
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .product-image {
+    max-width: 80px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  /* Empty Cart Message Styling */
+  .empty-cart-message {
     margin-top: 20px;
     color: #555;
-}
-
-.empty-cart-message p {
+  }
+  
+  .empty-cart-message p {
     margin-bottom: 10px;
-}
-
-.empty-cart-message button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+  }
+  
+  .empty-cart-message button {
+    display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
-    color: #fff;
-    background-color: #a44f9f;
+    color: #ffffff;
+    background-color: #3357c3;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.empty-cart-message button:hover {
-    background-color: #8c3b7a;
-}
-
-/* Button Icon Styling */
-.empty-cart-message button i {
-    display: inline-flex;
+  }
+  
+  .empty-cart-message button:hover {
+    background-color: #dfe4f2;
+  }
+  
+  /* Totals Styling */
+  .totals {
+    margin-top: 20px;
+    text-align: right;
+    font-weight: bold;
+  }
+  
+  /* Order and Clear Cart Buttons */
+  .clear-button,
+  .order-button,
+  .confirm-button,
+  .cancel-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #3357c3;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+  }
+  
+  .clear-button:hover,
+  .order-button:hover,
+  .confirm-button:hover,
+  .cancel-button:hover {
+    background-color: #415da4;
+  }
+  
+  /* Remove Button Styling */
+  .remove-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ff4d4d; /* Red color for remove */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .remove-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+  }
+  
+  /* Order Modal Overlay */
+  .order-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border: 2px solid #a44f9f;
-    border-radius: 50%;
-    font-size: 20px;
-    color: #a44f9f;
-    margin-right: 10px;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-}
-
-.empty-cart-message button:hover i {
-    background: #a44f9f;
-    color: #000;
-    box-shadow: 0 0 20px #a44f9f;
-    transform: scale(1.1);
-}
+    z-index: 1000;
+  }
+  
+  .order-modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    text-align: center;
+    position: relative;
+  }
+  
+  .order-modal-content {
+    margin-bottom: 20px;
+  }
+  
+  .order-modal h2 {
+    margin-bottom: 10px;
+  }
+  
+  .order-modal p {
+    margin: 5px 0;
+  }
+  
+  .modal-buttons {
+    margin-top: 20px;
+  }
+  
+  .modal-buttons button {
+    margin-left: 10px;
+  }
+  
+  /* Add to Cart Icon */
+  .cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #8c3b7a;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+  }
+  
+  /* Responsive Adjustments */
+  @media screen and (max-width: 768px) {
+    table {
+      width: 100%;
+    }
+  
+    .cart-item {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .cart-item img {
+      margin-bottom: 10px;
+    }
+  
+    .order-modal {
+      max-width: 90%;
+    }
+  }
+  

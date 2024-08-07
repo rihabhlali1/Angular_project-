@@ -1,4 +1,4 @@
-<!-- src/app/cart/cart.component.html -->
+
 <div *ngIf="product" class="product-detail">
   <!-- Cadre 1: Product Overview -->
   <div class="cadre">
@@ -18,31 +18,31 @@
         <p>Share this product:</p>
       </div>
       <div class="thumbnails-share-icons">
-        <i class='bx bxl-facebook-circle' style='color:#bc0f93' ></i>
-        <i class='bx bxl-twitter' style='color:#bc0f93' ></i>
-        <i class='bx bxl-instagram-alt' style='color:#bc0f93' ></i>
+        <i class='bx bxl-facebook-circle' style='color:#bc0f93'></i>
+        <i class='bx bxl-twitter' style='color:#bc0f93'></i>
+        <i class='bx bxl-instagram-alt' style='color:#bc0f93'></i>
       </div>
     </div>
 
     <div class="cadre-right">
       <!-- Product Details -->
-      <p class="large-text"><strong> Official Store<b> BEST SELLER </b></strong></p>
+      <p class="large-text"><strong> Official Store <b>BEST SELLER</b></strong></p>
       <p>{{ product.title }} - {{ product.description }} - {{ product.features }}</p>
       <p>Brand: {{ product.brand }} | Similar products by {{ product.brand }}</p>
       <p>{{ product.price | currency: 'TND' }}</p>
-      <p>{{ product.originalPrice | currency: 'USD' }}</p>
-      <p>{{ product.discount }}%</p>
+      <p>{{ product.originalPrice | currency: 'TND' }}</p>
+      <p> Discount : {{ product.discount }}%</p>
       <p>{{ product.stock }} items only</p>
       <p>Free shipping (save {{ product.shippingDiscount | currency: 'TND' }}) to {{ product.shippingDestination }}</p>
       <p>{{ product.rating }} out of 5</p>
       <p>{{ product.reviews?.length }} verified reviews</p>
-      <button routerLink="/cart">BUY NOW</button>
+      <button (click)="addToCart(product)" routerLink="/cart">BUY NOW</button>
 
       <br><br>
       <p><u><b>PROMOTIONS</b></u></p>
-      <p><i class='bx bx-star' style='color:#bc0f93'></i>New customers: Enjoy {{ product.newCustomerDiscount }} %off on the app with code <b>'{{ product.newCustomerCode }}'</b>(capped at {{ product.newCustomerLimit }})</p>
-      <p><i class='bx bx-phone' style='color:#bc0f93'></i>To order, call {{ product.contactNumber }}</p>
-      <p><i class='bx bxl-telegram' style='color:#bc0f93'></i>Free shipping on orders over {{ product.freeShippingThreshold }} TND on {{ product.express }} products</p>
+      <p><i class='bx bx-star' style='color:#bc0f93'></i> New customers: Enjoy {{ product.newCustomerDiscount }}% off on the app with code <b>'{{ product.newCustomerCode }}'</b> (capped at {{ product.newCustomerLimit }})</p>
+      <p><i class='bx bx-phone' style='color:#bc0f93'></i> To order, call {{ product.contactNumber }}</p>
+      <p><i class='bx bxl-telegram' style='color:#bc0f93'></i> Free shipping on orders over {{ product.freeShippingThreshold }} TND on {{ product.express }} products</p>
     </div>
   </div>
 
@@ -67,25 +67,25 @@
     <div class="cadre-left">
       <h3>Technical Specifications</h3>
       <p>MAIN FEATURES</p>
-      <p>Screen: {{ product.screen }} inches {{ product.resolution }}</p>
-      <p>Processor: {{ product.processor }}</p>
-      <p>RAM: {{ product.ram }}</p>
-      <p>Storage Capacity: {{ product.storage }}</p>
-      <p>Front Camera: {{ product.frontCamera }}</p>
-      <p>Rear Camera: {{ product.rearCamera }}</p>
-      <p>SIM Card Slots: {{ product.sim }}</p>
+      <p *ngIf="product.screen && product.resolution">Screen: {{ product.screen }} inches {{ product.resolution }}</p>
+      <p *ngIf="product.processor">Processor: {{ product.processor }}</p>
+      <p *ngIf="product.ram">RAM: {{ product.ram }}</p>
+      <p *ngIf="product.storage">Storage: {{ product.storage }}</p>
+      <p *ngIf="product.frontCamera">Front Camera: {{ product.frontCamera }}</p>
+      <p *ngIf="product.rearCamera">Rear Camera: {{ product.rearCamera }}</p>
+      <p *ngIf="product.sim">SIM Card Slots: {{ product.sim }}</p>
     </div>
     <div class="cadre-right">
-      <p>Battery: {{ product.battery }}</p>
-      <p>Operating System: {{ product.os }}</p>
-      <p>Connectivity: {{ product.connectivity }}</p>
+      <p *ngIf="product.battery">Battery: {{ product.battery }}</p>
+      <p *ngIf="product.os">Operating System: {{ product.os }}</p>
+      <p *ngIf="product.connectivity">Connectivity: {{ product.connectivity }}</p>
       <p>TECHNICAL DESCRIPTION</p>
-      <p>SKU: {{ product.sku }}</p>
-      <p>GTIN Barcode: {{ product.gtin }}</p>
-      <p>Product Range: {{ product.range }}</p>
-      <p>Model: {{ product.model }}</p>
-      <p>Weight (kg): {{ product.weight }}</p>
-      <p>Color: {{ product.color }}</p>
+      <p *ngIf="product.sku">SKU: {{ product.sku }}</p>
+      <p *ngIf="product.gtin">GTIN Barcode: {{ product.gtin }}</p>
+      <p *ngIf="product.range">Product Range: {{ product.range }}</p>
+      <p *ngIf="product.model">Model: {{ product.model }}</p>
+      <p *ngIf="product.weight">Weight (kg): {{ product.weight }}</p>
+      <p *ngIf="product.color">Color: {{ product.color }}</p>
     </div>
   </div>
 </div>

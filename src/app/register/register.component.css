@@ -15,11 +15,24 @@ h2 {
     margin-bottom: 20px;
 }
 
-.form-group {
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
     margin-bottom: 15px;
 }
 
-.form-control {
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -27,26 +40,30 @@ h2 {
     border-radius: 4px;
 }
 
-.btn {
+button {
     display: block;
     width: 100%;
     padding: 10px;
     font-size: 18px;
     color: #fff;
-    background-color: #28a745;
+    background-color: rgb(83, 98, 99);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-    background-color: #218838;
+button:hover {
+    background-color: rgb(83, 98, 99);
 }
 
 .login-link {
     text-align: center;
     margin-top: 15px;
+}
+
+.login-link p {
+    margin: 0;
 }
 
 .login-link a {
@@ -56,4 +73,14 @@ h2 {
 
 .login-link a:hover {
     text-decoration: underline;
+}
+
+.link-style {
+    color: #007bff; 
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-style:hover {
+    text-decoration: none; /* Optional: Remove underline on hover */
 }

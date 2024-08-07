@@ -13,6 +13,7 @@ export interface Product {
   id: number;
   title: string;
   description: string;
+  CategoryId: number;
   briefDescription: string; // Add this property
   productCategory: CategoryType;
   price: number;

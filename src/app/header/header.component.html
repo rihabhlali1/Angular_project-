@@ -1,60 +1,82 @@
 <header class="header">
-    <div class="logo">
-        <span>Flesk Shopping <i class='bx bxs-shopping-bags' style='color:#6e32f7'  ></i></span>
-    </div>
+  <div class="logo">
+    <i class="bx bxs-shopping-bags" style="color: #5c86f0"></i>
+    <span>Flesk Shopping </span>
+  </div>
 
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a routerLink="../home">Home</a></li>
-            <li class="dropdown" (mouseenter)="toggleCategories()" (mouseleave)="closeCategories()">
-                <a class="dropdown-toggle">Categories</a>
-                <ul class="dropdown-menu" *ngIf="showCategories" (mouseleave)="closeCategories()">
-                    <li><a [routerLink]="['/products', 'Electronics']">Electronics</a></li>
-                    <li><a [routerLink]="['/products', 'Phones']">Phones</a></li>
-                    <li><a [routerLink]="['/products', 'Informatique']">Informatique</a></li>
-                    <li><a [routerLink]="['/products', 'Mode']">Mode</a></li>
-                    <!-- Add more categories as needed -->
-                </ul>
-            </li>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a routerLink="/home" [class.active]="currentRoute === '/home'">Home</a></li>
+      <li class="dropdown" 
+          (mouseenter)="showCategories = true" 
+          (mouseleave)="showCategories = false">
+        <a class="dropdown-toggle">Categories</a>
+        <ul class="dropdown-menu" [ngClass]="{ show: showCategories }">
+          <li><a routerLink="/products/145">Electronics</a></li>
+          <li><a routerLink="/products/146">Phones</a></li>
+          <li><a routerLink="/products/147">Informatique</a></li>
+          <li><a routerLink="/products/148">Mode</a></li>
         </ul>
-    </nav>
+      </li>
+    </ul>
+  </nav>
 
-    <div class="actions">
-        <button class="btn" (click)="toggleLogin()" routerLink="../login">Login</button>
-        <button class="btn" (click)="toggleRegister()" routerLink="../register">Register</button>
-        <button class="btn" routerLink="../cart" [class.active]="currentRoute.startsWith('/cart')">
-            <i class='bx bx-cart-add' style='color:hsl(314, 65%, 59%)'></i> CheckOut
-            <span class="badge">{{ cartItems }}</span>
-        </button>
+  <div class="actions">
+    <div class="search-tab">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Search..."
+        (keyup.enter)="search()"
+      />
+      <i class="bx bx-search-alt search-icon" (click)="search()"></i>
     </div>
+    <button
+      class="btn"
+      routerLink="/cart"
+      [class.active]="currentRoute.startsWith('/cart')"
+    >
+      <i class="bx bx-cart-add" style="color: #4777f1"></i>
+      {{ getCartButtonText() }}
+      <span class="badge">{{ totalItems }}</span>
+    </button>
+    <a class="dropdown login-dropdown" 
+         (mouseenter)="showLoginDropdown = true" 
+         (mouseleave)="showLoginDropdown = false">
+      <i class="bx bxs-user-circle"></i>
+      <ul class="login-dropdown-menu" [ngClass]="{ show: showLoginDropdown }">
+        <li>
+          <button class="btn" (click)="toggleLogin()">
+            <i class="bx bxs-lock-open-alt"></i> Login
+          </button>
+        </li>
+        <li>
+          <button class="btn" (click)="toggleRegister()">
+            <i class="bx bx-check"></i> Register
+          </button>
+        </li>
+      </ul>
+    </a>
+    <button class="btn" routerLink="/contact">
+      <i class="bx bx-envelope"></i>
+    </button>
+  </div>
 </header>
 
-
-<!-- Modal -->
-<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" *ngIf="showLogin">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Login</h5>
-                <button type="button" class="btn-close" (click)="toggleLogin()"></button>
-            </div>
-            <div class="modal-body">
-                <app-login></app-login>
-            </div>
-        </div>
+<!-- Modal Overlay -->
+<div
+  class="modal-overlay"
+  *ngIf="showLogin || showRegister"
+  (click)="handleOverlayClick($event)"
+>
+  <div class="modal-content" (click)="handleModalContentClick($event)">
+    <div class="modal-header">
+      <h5 class="modal-title">{{ showLogin ? 'Login' : 'Register' }}</h5>
+      <button type="button" class="btn-close" (click)="closeModals()">×</button>
     </div>
-</div>
-
-<div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" *ngIf="showRegister">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Register</h5>
-                <button type="button" class="btn-close" (click)="toggleRegister()"></button>
-            </div>
-            <div class="modal-body">
-                <app-register></app-register>
-            </div>
-        </div>
+    <div class="modal-body">
+      <app-login *ngIf="showLogin" (registerClicked)="toggleRegister()"></app-login>
+      <app-register *ngIf="showRegister" (loginClicked)="toggleLogin()"></app-register>
     </div>
+  </div>
 </div>

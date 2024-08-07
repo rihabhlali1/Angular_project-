@@ -1,21 +1,64 @@
 <div class="cart">
   <h2>Shopping Cart</h2>
-  <ul *ngIf="cartItems.length > 0">
-    <li *ngFor="let item of cartItems">
-      <img [src]="item.product.imageUrl" alt="{{ item.product.title }}" />
-      <h3>{{ item.product.title }}</h3>
-      <p>{{ item.product.description }}</p>
-      <p>Price: {{ item.product.price | currency: 'TND' }}</p>
-      <p>Quantity: 
-        <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(item.product, item.quantity)" />
-      </p>
-      <button (click)="removeFromCart(item.product)">Remove</button>
-    </li>
-  </ul>
-  <div class="empty-cart-message" *ngIf="cartItems.length === 0">
-    <p>Your cart is empty!</p>
-    <p>Explore our categories and discover our best offers!</p>
-    <button (click)="startShopping()" routerLink="../home">START SHOPPING</button>
+  <ng-container *ngIf="cartItems$ | async as cartItems">
+    <table *ngIf="cartItems.length > 0">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Unit Price (TND)</th>
+          <th>Total (TND)</th>
+          <th>Actions</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td><img *ngIf="item.product.imageUrl" [src]="item.product.imageUrl" alt="{{ item.product.title }}" class="product-image" /></td>
+          <td>{{ item.product.title }}</td>
+          <td>
+            <input type="number" [value]="item.quantity" (change)="updateQuantity(item.product, $event)" />
+          </td>
+          <td>{{ item.product.price | currency: 'TND' }}</td>
+          <td>{{ item.product.price * item.quantity | currency: 'TND' }}</td>
+          <td>
+            <button class="remove-button" (click)="removeFromCart(item.product)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="cartItems.length === 0" class="empty-cart-message">
+      <p>Your cart is empty!</p>
+      <p>Explore our categories and discover our best offers!</p>
+      <button (click)="startShopping()" routerLink="../home">START SHOPPING</button>
+    </div>
+    <div class="totals" *ngIf="cartItems.length > 0">
+      <p>Sub-Total: {{ subTotal | currency: 'TND' }}</p>
+      <p>Order Total: {{ orderTotal | currency: 'TND' }}</p>
+      <button class="clear-button" (click)="clearCart()">Clear Cart</button>
+      <button class="order-button" (click)="order(cartItems[0])">Order Now</button> <!-- Example with the first item -->
+    </div>
+  </ng-container>
+</div>
+
+<!-- Order Modal Overlay -->
+<div class="order-modal-overlay" *ngIf="showOrderModal">
+  <div class="order-modal">
+    <div class="order-modal-content">
+      <h2>Order Details</h2>
+      <p><strong>Product:</strong> {{ selectedOrderItem.product.title }}</p>
+      <p><strong>Description:</strong> {{ selectedOrderItem.product.description }}</p>
+      <p><strong>Price:</strong> {{ selectedOrderItem.product.price | currency: 'TND' }}</p>
+      <p><strong>Quantity:</strong> {{ selectedOrderItem.quantity }}</p>
+      <div class="modal-buttons">
+        <button class="confirm-button" (click)="confirmOrder()">Confirm Order</button>
+        <button class="cancel-button" (click)="closeOrderDialog()">Cancel</button>
+      </div>
+    </div>
   </div>
-  <button *ngIf="cartItems.length > 0" (click)="clearCart()">Clear Cart</button>
+</div>
+
+<!-- Add to Cart Icon -->
+<div *ngIf="iconVisible" class="cart-icon">
+  Product added to cart!
 </div>

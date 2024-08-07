@@ -1,11 +1,37 @@
-<cdk-virtual-scroll-viewport itemSize="100" class="product-list-viewport">
-  <div *cdkVirtualFor="let product of products" class="product">
-    <h2>{{ product.title }}</h2>
-    <img [src]="product.imageUrl" alt="{{ product.title }}" />
-    <p>{{ product.description }}</p>
-    <p>Price: {{ product.price | currency: 'TND' }}</p>
-    <p>Category: {{ product.productCategory }}</p>
-    <button [routerLink]="['/product-detail', product.id]">View Details</button>
-    <button (click)="addToCart(product)">Add to Cart</button>
+<!-- Introductory Cards Container -->
+<div class="intro-cards-container">
+  <div
+    class="intro-card"
+    *ngFor="let card of introCards; let i = index"
+    [ngClass]="{ 'visible': currentCardIndex === i }"
+  >
+    <div class="intro-card-content">
+      <h2>{{ card.title }}</h2>
+      <p>{{ card.description }}</p>
+      <button (click)="loadAllProducts()">Explore Now</button>
+    </div>
+    <div class="intro-card-image">
+      <img [src]="card.image" alt="Intro Image" />
+    </div>
   </div>
-</cdk-virtual-scroll-viewport>
+  <!-- Carousel Navigation Controls -->
+  <button class="carousel-control prev" (click)="prevCard()">&#10094;</button>
+  <button class="carousel-control next" (click)="nextCard()">&#10095;</button>
+</div>
+
+<!-- Product List -->
+<div class="category-card">
+  <div class="category-card-body">
+    <div class="product-list">
+      <div class="product-card" *ngFor="let product of products" [routerLink]="['/product-detail', product.id]">
+        <img [src]="product.imageUrl" alt="{{ product.title }}" />
+        <div class="product-card-content">
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.description }}</p>
+          <p>Price: {{ product.price | currency: 'TND' }}</p>
+          <button (click)="addToCart(product)" routerLink="/cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
